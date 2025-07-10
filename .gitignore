@@ -12,3 +12,5 @@
 .idea
 /.idea/
 ###< symfony/framework-bundle ###
+
+composer.phar
