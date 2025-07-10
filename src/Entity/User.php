@@ -25,11 +25,6 @@ class User
     #[ORM\Column(type: 'datetime')]
     private string $updatedAt;
 
-    public function __construct()
-    {
-
-    }
-
     public function getId(): ?int
     {
         return $this->id;
