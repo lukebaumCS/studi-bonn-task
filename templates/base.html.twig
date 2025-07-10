@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Studi Bonn Task{% endblock %}</title>
+        <title>{% block title %}Studi Bonn Task{% endblock title %}</title>
         {% block stylesheets %}
         {% endblock %}
 
@@ -10,21 +10,24 @@
     <body>
         {% block h1 %}
             <h1> Please add a title </h1>
-        {% endblock %}
+        {% endblock h1 %}
         
         {% block addButton %}
             <button type="submit" >
                 <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px;" >
             </button>    
-        {% endblock %}
+        {% endblock addButton %}
         
-        {% block logoutButton%}
+        {% block logoutButton %}
         <button type="submit">
-                <img src="{{ asset('images/logout.svg') }}" alt="Add" style="width: 40px; height: 40px;">
+                <img src="{{ asset('images/logout.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
             </button>        
-        {% endblock%}
+        {% endblock logoutButton %}
+        
+        <br>
+        
 
         {% block body %}
-        {% endblock %}
+        {% endblock body %}
     </body>
 </html>

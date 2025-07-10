@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block title %} Team {% endblock title %}
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block h1 %} Welcome to {{ teamName }} {% endblock h1 %}
+
+{% block body %}
+
+<div class="container">
+    <div class="myTasks">
+        {% if myTasks %}
+            {% for task in myTasks %}
+                <button class="myTasks-button"> {{ task.name }} | {{ task.status }} </button>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <div class="addUsers">
+        <h2> All Users </h2>
+        {% if allUsers %}
+            {% for user in allUsers %}
+                <button class="user-button"> {{ user.name }} </button>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

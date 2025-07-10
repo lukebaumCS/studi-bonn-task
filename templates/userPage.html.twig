@@ -1,0 +1,31 @@
+{% extends "base.html.twig"  %}
+{% block title %} User {% endblock title %}
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block h1 %} Welcome {{ username }} {% endblock h1 %}
+
+{% block body %}
+
+<div class="container">
+    <div class="myTeamContainer">
+        {% if myTeams %}
+            {% for team in myTeams %}
+                <button class="myTeam-button"> {{ team.name }} </button>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="allTeamsContainer">
+        {% if allTeams %}
+            {% for team in allTeams %}
+                <button class="allTeams-button"> {{ team.name }} </button>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
