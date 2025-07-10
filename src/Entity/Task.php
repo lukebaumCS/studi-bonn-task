@@ -2,99 +2,109 @@
 
 namespace App\Entity;
 
+use App\Repository\TaskRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
-#[ORM\Table(name: 'tasks')]
+#[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private int $id;
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $title;
+    #[ORM\Column(length: 255)]
+    private ?string $title = null;
 
-    #[ORM\Column(type: 'string')]
-    private string $description;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
     #[ORM\Column(type: 'string', enumType: 'App\Entity\TaskStatus')]
-    private TaskStatus $status;
-    #[ORM\ManyToOne(targetEntity: Team::class, inversedBy: 'tasks')]
-    #[ORM\JoinColumn(nullable: false)]
-    private Team $team;
-    #[ORM\Column(type: 'datetime')]
-    private string $createdAt;
-    #[ORM\Column(type: 'datetime')]
-    private string $updatedAt;
+    private ?TaskStatus $status;
 
-    public function getId(): int
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Team $team = null;
+
+    #[ORM\Column]
+    private ?\DateTime $createdAt = null;
+
+    #[ORM\Column]
+    private ?\DateTime $updatedAt = null;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): void
+    public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
     }
 
-    public function getStatus(): TaskStatus
-    {
-        return $this->status;
-    }
-
-    public function setStatus(TaskStatus $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getTeam(): Team
+    public function getTeam(): ?Team
     {
         return $this->team;
     }
 
-    public function setTeam(Team $team): void
+    public function setTeam(?Team $team): static
     {
         $this->team = $team;
+
+        return $this;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
-    public function getUpdatedAt(): string
+    public function getStatus(): ?TaskStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?TaskStatus $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(\DateTime $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }
