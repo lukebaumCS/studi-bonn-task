@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Team{% endblock %}
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <h1>New Team</h1>
+
+    {{ form_errors(newTeamForm) }}
+
+    {{ form_start(newTeamForm) }}
+        {{ form_row(newTeamForm.name) }}
+        {{ form_row(newTeamForm.users)}}
+
+        <Button type="submit" class="btn">Create New Team</Button>
+    {{ form_end(newTeamForm) }}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Nutzer auswählen",
+            allowClear: true
+        });
+    });
+    </script>
+{% endblock %}
