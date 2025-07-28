@@ -21,7 +21,15 @@ class NewTeamController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            dd($form->getData());
+            $owner = $this -> getUser();
+            $now = new \DateTime();
+
+            $team -> setCreatedAt($now);
+            $team -> setUpdatedAt($now);
+            $team -> setOwner($owner);
+
+            $entityManager -> persist($team);
+            $entityManager -> flush();
 
             return $this -> redirectToRoute('userPage');
         }
