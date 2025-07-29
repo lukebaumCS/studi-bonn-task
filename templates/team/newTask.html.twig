@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Task {% endblock %}
+
+{% block body %}
+    <h1>New Task </h1>
+
+    {{ form_errors(newTaskForm) }}
+
+    {{ form_start(newTaskForm) }}
+        {{ form_row(newTaskForm.title) }}
+        {{ form_row(newTaskForm.description) }}
+
+        <Button type="submit" class = "btn">Create New Task</Button>
+    {{ form_end(newTaskForm) }}
+{% endblock %}
