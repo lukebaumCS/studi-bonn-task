@@ -30,4 +30,12 @@ class NewTeamFormType extends AbstractType {
                 'attr' => ['class' => 'select2'] 
             ]);
     }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data-class' => Team::class,
+        ]);
+    }
+
 }
