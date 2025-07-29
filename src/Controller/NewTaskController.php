@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class NewTaskController extends AbstractController
 {
-    #[Route('team/newTask', name: 'new-task')]
-    public function newTask(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('team/{id}/task/new', name: 'new-task')]
+    public function newTask(Request $request, Team $team, EntityManagerInterface $entityManager): Response
     {
         $task = new Task;
         $form = $this -> createForm(NewTaskFormType::class, $task);
@@ -24,21 +24,21 @@ class NewTaskController extends AbstractController
         if ($form -> isSubmitted() && $form->isValid()){
             $now = new \DateTime();
 
+            $task -> setTeam($team);
             $task -> setCreatedAt($now);
             $task -> setUpdatedAt($now);
-
             $task -> setStatus(TaskStatus::TODO);
-            #TODO: add team dafür müssen wir die team variable übergeben"
 
-            dd($task);
+            $team -> addTask($task);
 
-            $entityManager -> persist($task);
+            $entityManager -> persist($task, $team);
             $entityManager -> flush();
 
             return $this -> redirectToRoute('teamPage');
         }
         return $this -> render('team/newTask.html.twig', [
             'newTaskForm' => $form,
+            'team' => $team,
         ]);
     }
 }
