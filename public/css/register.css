@@ -93,6 +93,7 @@ body {
     background-repeat: no-repeat;
     background-image: url('icons/closedEye.png');
     transition: background-image 0.2s ease;
+
 }
 
 .togglePassword .eye-icon.open {
