@@ -6,6 +6,13 @@
 
 {% block h1 %} Welcome to {{ team.name }} {% endblock h1 %}
 
+{% block addButton %}
+    <a href="{{ path('new-task', {'id': team.id}) }}">
+        <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px; cursor: pointer;">
+    </a>
+{% endblock addButton %}
+
+
 {% block body %}
 
     <div class="container">
