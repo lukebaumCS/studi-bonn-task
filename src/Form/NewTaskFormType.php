@@ -18,6 +18,10 @@ class NewTaskFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $team = $options['team'];
+        $users = $team -> getUsers() -> toArray();
+        $owner = $team -> getOwner();
+
+        $users[] = $owner;
 
         $builder
             ->add('title', TextType::class, [
@@ -36,7 +40,7 @@ class NewTaskFormType extends AbstractType
             ])
             ->add('user',EntityType::class, [
                 'class'=> User::class,
-                'choices' => $team -> getUsers(),
+                'choices' => $users,
                 'choice_label'=> fn(User $user) => $user -> getEmail(),
                 'constraints' => [
                     new NotBlank([
