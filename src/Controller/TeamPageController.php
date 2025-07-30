@@ -20,11 +20,10 @@ class TeamPageController extends AbstractController
 
         $user = $this -> getUser();
 
-        $isOwner = $user == $team -> getOwner();
+
         
         return $this -> render('team/teamPage.html.twig', [
             'team' => $team,
-           'isOwner' => $isOwner,
         ]);
     }
 }
