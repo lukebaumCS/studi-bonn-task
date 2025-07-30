@@ -1,5 +1,5 @@
 <?php
-# symfony server:start 
+# symfony server:start
 namespace App\Controller;
 
 use PhpParser\Node\Name;
@@ -11,13 +11,13 @@ use Psr\Log\LoggerInterface;
 use App\Entity\Team;
 use App\Controller\User;
 
-class UserPageController extends AbstractController 
+class UserPageController extends AbstractController
 {
 
     #[Route('userPage', name: 'userPage')]
     public function userPage(TeamRepository $teamRepository, LoggerInterface $logger): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
         $myID = $user->getId();
 
@@ -28,7 +28,7 @@ class UserPageController extends AbstractController
 
 
         foreach ($allTeams as $team) {
-        
+
             $owner = $team->getOwner();
 
             foreach ($team->getUsers() as $member) {
@@ -43,9 +43,9 @@ class UserPageController extends AbstractController
             }
         }
 
-        // TODO: ADD NAME FOR USER IN TABLE 
+        // TODO: ADD NAME FOR USER IN TABLE
         $name = "lukas";
-        
+
         return $this->render('userPage.html.twig', ['username' => $name, 'myTeams' => $myTeams, 'allTeams' => $otherTeams]);
     }
 }
