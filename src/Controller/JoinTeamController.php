@@ -34,7 +34,9 @@ class JoinTeamController extends AbstractController {
         $entityManager->refresh($team);
 
 
-        return $this -> render('team/teamPage.html.twig', ['team' => $team]);
+        return $this -> redirectToRoute('teamPage', [
+                'id' => $team -> getId(),
+        ]);
 
     }
 
