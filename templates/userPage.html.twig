@@ -31,7 +31,9 @@
     <div class="allTeamsContainer">
         {% if allTeams %}
             {% for team in allTeams %}
+            <a href="{{ path('join-team', {'id': team.id }) }}">
                 <button class="allTeams-button"> {{ team.name }} </button>
+            </a>
             {% endfor %}
         {% endif %}
     </div>

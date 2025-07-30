@@ -17,10 +17,7 @@ class TeamPageController extends AbstractController
     #[Route('teamPage/{id}', 'teamPage')]
     public function teamPage(Request $request, Team $team, LoggerInterface $logger): Response{
 
-
         $user = $this -> getUser();
-
-
         
         return $this -> render('team/teamPage.html.twig', [
             'team' => $team,
