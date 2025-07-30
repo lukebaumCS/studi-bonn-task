@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TestingTwigTemplates extends AbstractController
 {
-    #[Route('userPageTest', name: 'userPageTest')]
+    #[Route('userPage', name: 'userPage')]
     public function userPage(): Response
     {
         $this -> denyAccessUnlessGranted('ROLE_USER');
@@ -28,7 +28,7 @@ class TestingTwigTemplates extends AbstractController
     }
 
 
-        #[Route('teamPageTest/{id}', name: 'teamPageTest')]
+        #[Route('teamPage/{id}', name: 'teamPage')]
         public function teamPage(): Response
         {
             $this -> denyAccessUnlessGranted('ROLE_USER');
