@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TestingTwigTemplates extends AbstractController
 {
-    #[Route('userPage', name: 'userPage')]
+    #[Route('userPageTest', name: 'userPageTest')]
     public function userPage(): Response
     {
 
@@ -28,7 +28,7 @@ class TestingTwigTemplates extends AbstractController
     }
 
 
-        #[Route('teamPage', name: 'teamPageTest')]
+        #[Route('teamPageTest/{id}', name: 'teamPageTest')]
         public function teamPage(): Response
         {
 
