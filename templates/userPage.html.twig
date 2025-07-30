@@ -12,7 +12,9 @@
     <div class="myTeamContainer">
         {% if myTeams %}
             {% for team in myTeams %}
-                <button class="myTeam-button"> {{ team.name }} </button>
+            <a href="{{ path('teamPageTest', {'id': team.id}) }}">
+                <button class="myTeam-button">{{ team.name }}</button>
+            </a>
             {% endfor %}
         {% endif %}
     </div>
