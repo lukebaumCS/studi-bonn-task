@@ -53,8 +53,8 @@ class UserPageController extends AbstractController
         }
 
 
-        // TODO: ADD NAME FOR USER IN TABLE
-        $name = "lukas";
+
+        $name =$myID;
 
         return $this->render('userPage.html.twig', ['username' => $name, 'myTeams' => $myTeams, 'allTeams' => $otherTeams]);
     }
