@@ -18,9 +18,15 @@ class TeamPageController extends AbstractController
     public function teamPage(Request $request, Team $team, LoggerInterface $logger): Response{
 
         $user = $this -> getUser();
+        $tasks = $team -> getTasks() -> toArray();
+
+        usort($tasks, fn(Task $a, Task $b) =>
+            ($b->getUser() === $user) <=> ($a->getUser() === $user)
+        );
         
         return $this -> render('team/teamPage.html.twig', [
             'team' => $team,
+            'tasks' => $tasks,
         ]);
     }
 }

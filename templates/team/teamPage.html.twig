@@ -17,11 +17,18 @@
 
     <div class="container">
         <div class="myTasks">
-            {% if team.tasks %}
-                {% for task in team.tasks %}
-                    <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} </button>
+            {% if tasks %}
+                {% for task in tasks %}
+                <a href="{{ path('edit-task', {'team_id': team.id, 'task_id': task.id}) }}">
+                    <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} | {{ task.user.email }}</button>
+                </a>
                 {% endfor %}
             {% endif %}
+            {% for message in app.flashes('error') %}
+                <div class="allert alert-denied">
+                    {{ message }}
+                </div>
+            {% endfor %}
         </div>
 
 
