@@ -15,6 +15,9 @@
                 <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} </button>
             {% endfor %}
         {% endif %}
+        {% if isOwner %}
+            <div>Owner</div>
+        {% endif %}
     </div>
 
 

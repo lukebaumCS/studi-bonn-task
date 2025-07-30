@@ -15,8 +15,13 @@ class TeamPageController extends AbstractController
     #[Route('team/{id}', name: 'teamPage')]
     public function teamPage(Request $request, Team $team): Response{
 
+        $user = $this -> getUser();
+        $isOwner = $user == $team -> getOwner();
+
+
         return $this -> render('team/teamPage.html.twig', [
-            'team' => $team
+            'team' => $team,
+            'isOwner' => $isOwner,
         ]);
     }
 }
