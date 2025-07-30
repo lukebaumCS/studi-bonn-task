@@ -34,7 +34,6 @@
 
         <div class="users">
             <h2> Team users </h2>                
-            <div>{{ team.owner.email }}</div>
             {% if team.users %}
                 {% for user in team.users %}
                     <div>{{ user.email }}</div>

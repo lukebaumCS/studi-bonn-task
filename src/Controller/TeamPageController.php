@@ -23,15 +23,10 @@ class TeamPageController extends AbstractController
         usort($tasks, fn(Task $a, Task $b) =>
             ($b->getUser() === $user) <=> ($a->getUser() === $user)
         );
-
-        $isOwner = $user == $team -> getOwner();
-
-
         
         return $this -> render('team/teamPage.html.twig', [
             'team' => $team,
             'tasks' => $tasks,
-            'isOwner' => $isOwner,
         ]);
     }
 }

@@ -1,19 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <script src="https://kit.fontawesome.com/179535dd9d.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block addButton %}{% endblock %}
+{% block logoutButton %}{% endblock %}
+{% block homeButton %}{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="box">
+        <h2>SIGN UP</h2>
+        <h4>Enter your data</h4>
 
-    {{ form_errors(registrationForm) }}
+        {{ form_start(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="inputBoxes">
+            {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'example@uni-bonn.de'}}) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="passwordContainer">
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Password'}}) }}
+                <span class="togglePassword" id="togglePassword1">
+                    <i class="eye-icon" id="eyeIcon1"></i>
+                </span>
+            </div>
+        </div>
+
+        
+        <div class="termsContainer">
+            {{ form_widget(registrationForm.agreeTerms) }}
+            <label for="{{ registrationForm.agreeTerms.vars.id }}">
+            I agree to the terms and conditions
+            </label>
+        </div>
+
+        <div class="signupBoxLinks">
+            <div class="signupButton">
+                <button type="submit">Sign up</button>
+            </div>
+            <p>Have an account? <a href="{{ path('app_login') }}">Log in</a></p>
+        </div>
+
+        {{ form_end(registrationForm) }}
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId, iconId) {
+            const passwordField = document.getElementById(inputId);
+            const eyeIcon = document.getElementById(iconId);
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.add('open');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('open');
+            }
+        }
+
+        document.getElementById('togglePassword1').addEventListener('click', function () {
+            togglePasswordVisibility('{{ registrationForm.plainPassword.vars.id }}', 'eyeIcon1');
+        });
+    </script>
 {% endblock %}

@@ -24,27 +24,34 @@ class UserPageController extends AbstractController
         $otherTeams = [];
         $myTeams = [];
 
+
         $allTeams = $teamRepository->findAll();
 
 
         foreach ($allTeams as $team) {
-
             $owner = $team->getOwner();
 
-            foreach ($team->getUsers() as $member) {
-                if ($member->getId() == $myID or $owner->getId() == $myID) {
-                    $myTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
-                    break;
+            $isMyTeam = false;
+
+            if ($owner && $owner->getId() === $myID) {
+                $isMyTeam = true;
+            } else {
+                foreach ($team->getUsers() as $member) {
+                    if ($member->getId() === $myID) {
+                        $isMyTeam = true;
+                        break;
+                    }
                 }
-                else {
-                    $otherTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
-                    break;
-                }
+            }
+
+            if ($isMyTeam) {
+                $myTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
+            } else {
+                $otherTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
             }
         }
 
-        // TODO: ADD NAME FOR USER IN TABLE
-        $name = "lukas";
+        $name = $myID;
 
         return $this->render('userPage.html.twig', ['username' => $name, 'myTeams' => $myTeams, 'allTeams' => $otherTeams]);
     }
