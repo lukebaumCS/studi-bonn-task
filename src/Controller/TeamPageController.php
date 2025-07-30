@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TeamPageController extends AbstractController
 {
-    #[Route('team/{id}', name: 'teamPage')]
+    #[Route('team/{id}', 'teamPage')]
     public function teamPage(Request $request, Team $team): Response{
 
         $user = $this -> getUser();
