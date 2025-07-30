@@ -40,7 +40,7 @@ class Task
     public function getId(): ?int
     {
         return $this->id;
-    }
+    }   
 
     public function getTitle(): ?string
     {
