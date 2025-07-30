@@ -17,6 +17,7 @@ class NewTaskController extends AbstractController
     #[Route('team/{id}/task/new', name: 'new-task')]
     public function newTask(Request $request, Team $team, EntityManagerInterface $entityManager): Response
     {
+        $this -> denyAccessUnlessGranted('ROLE_USER');
         $task = new Task;
         $form = $this -> createForm(NewTaskFormType::class, $task);
         $form -> handleRequest($request);

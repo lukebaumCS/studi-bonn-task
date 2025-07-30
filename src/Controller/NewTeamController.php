@@ -14,8 +14,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class NewTeamController extends AbstractController
 {
     #[Route('newTeam', name: 'new-team')]
-    public function newTeam(Request $request, EntityManagerInterface $entityManager): Response 
+    public function newTeam(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $this -> denyAccessUnlessGranted('ROLE_USER');
         $team = new Team;
         $form = $this -> createForm(NewTeamFormType::class, $team);
         $form->handleRequest($request);

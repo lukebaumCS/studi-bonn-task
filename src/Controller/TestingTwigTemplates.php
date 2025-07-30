@@ -1,5 +1,5 @@
 <?php
-# symfony server:start 
+# symfony server:start
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +11,7 @@ class TestingTwigTemplates extends AbstractController
     #[Route('userPage', name: 'userPage')]
     public function userPage(): Response
     {
-
+        $this -> denyAccessUnlessGranted('ROLE_USER');
         $name = "lukas";
         $myTeams = [
             ['name' => 'Team Alpha'],
@@ -31,7 +31,7 @@ class TestingTwigTemplates extends AbstractController
         #[Route('teamPage', name: 'teamPage')]
         public function teamPage(): Response
         {
-
+            $this -> denyAccessUnlessGranted('ROLE_USER');
             $teamName = "Team Bravo";
             $myTasks = [
                 ['name' => 'Login erstellen', 'status' => 'Done'],
