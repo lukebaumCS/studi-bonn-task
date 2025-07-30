@@ -5,6 +5,14 @@
 
 
 {% block h1 %} Welcome {{ username }} {% endblock h1 %}
+  
+{% block addButton %}
+    <a href="{{ path('new-team') }}">
+        <button type="button">
+            <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px;" >
+        </button>    
+     </a>
+{% endblock addButton %}
 
 {% block body %}
 
