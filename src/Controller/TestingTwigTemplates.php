@@ -28,7 +28,7 @@ class TestingTwigTemplates extends AbstractController
     }
 
 
-        #[Route('teamPage', name: 'teamPage')]
+        #[Route('teamPage', name: 'teamPageTest')]
         public function teamPage(): Response
         {
 
