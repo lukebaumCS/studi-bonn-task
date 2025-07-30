@@ -31,7 +31,6 @@ class UserPageController extends AbstractController
         foreach ($allTeams as $team) {
             $owner = $team->getOwner();
 
-
             $isMyTeam = false;
 
             if ($owner && $owner->getId() === $myID) {
@@ -52,9 +51,7 @@ class UserPageController extends AbstractController
             }
         }
 
-
-
-        $name =$myID;
+        $name = $myID;
 
         return $this->render('userPage.html.twig', ['username' => $name, 'myTeams' => $myTeams, 'allTeams' => $otherTeams]);
     }
