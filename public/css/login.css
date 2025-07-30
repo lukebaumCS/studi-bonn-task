@@ -174,15 +174,11 @@ html, body {
 
 .loginWindowLinks a {
     color: #CAA6A6;
+    font-weight: bold;
+    
 }
 
-.loginWindowLinks a:hover{
-    color: #c8a8a8; 
-} 
 
-.loginWindowLinks a:active{
-    color: #c8a8a8; 
-} 
 
 .head{
     display:flex;
