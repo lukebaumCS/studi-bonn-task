@@ -24,6 +24,16 @@
                 </button> 
         </a>       
         {% endblock logoutButton %}
+
+        {% block homeButton %}
+        <a href="{{ path('userPage') }}">
+            <button type="button">
+                    <img src="{{ asset('images/home.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
+                </button> 
+        </a>       
+        {% endblock homeButton %}
+
+
         
         <br>
 
