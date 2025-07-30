@@ -13,19 +13,20 @@
         {% endblock h1 %}
         
         {% block addButton %}
-            <button type="submit" >
+            <button type="button" >
                 <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px;" >
             </button>    
         {% endblock addButton %}
         
         {% block logoutButton %}
-        <button type="submit">
-                <img src="{{ asset('images/logout.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
-            </button>        
+        <a href="{{ path('app_logout') }}">
+            <button type="button">
+                    <img src="{{ asset('images/logout.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
+                </button> 
+        </a>       
         {% endblock logoutButton %}
         
         <br>
-        
 
         {% block body %}
         {% endblock body %}
