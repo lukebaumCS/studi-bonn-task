@@ -23,7 +23,6 @@ security:
                 default_target_path: userPage
             logout:
                 path: app_logout
-
                 target: app_login
 
             # activate different ways to authenticate

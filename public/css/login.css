@@ -197,7 +197,7 @@ html, body {
     position: absolute;     /* Positions the element absolutely within its container */
     right: 15px;            /* Moves it 15px from the right */
     margin-top: 25px;       /* Adds space at the top */
-    cursor: pointer;        /* Changes the cursor to a pointer on hover */
+    cursor: pointer;       /* Changes the cursor to a pointer on hover */
 }
 
 .togglePassword .eye-icon {
