@@ -27,6 +27,10 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     private ?Team $team = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     #[ORM\Column]
     private ?\DateTime $createdAt = null;
 
@@ -36,7 +40,7 @@ class Task
     public function getId(): ?int
     {
         return $this->id;
-    }
+    }   
 
     public function getTitle(): ?string
     {
@@ -70,6 +74,18 @@ class Task
     public function setTeam(?Team $team): static
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getUser(): ?User 
+    {
+        return $this -> user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this -> user = $user;
 
         return $this;
     }

@@ -19,7 +19,9 @@ class NewTaskController extends AbstractController
     {
         $this -> denyAccessUnlessGranted('ROLE_USER');
         $task = new Task;
-        $form = $this -> createForm(NewTaskFormType::class, $task);
+        $form = $this -> createForm(NewTaskFormType::class, $task, [
+            'team' => $team,
+        ]);
         $form -> handleRequest($request);
 
         if ($form -> isSubmitted() && $form->isValid()){
@@ -35,7 +37,9 @@ class NewTaskController extends AbstractController
             $entityManager -> persist($task, $team);
             $entityManager -> flush();
 
-            return $this -> redirectToRoute('teamPage');
+            return $this -> redirectToRoute('teamPage', [
+                'id' => $team -> getId(),
+            ]);
         }
         return $this -> render('team/newTask.html.twig', [
             'newTaskForm' => $form,

@@ -11,6 +11,7 @@
     {{ form_start(newTaskForm) }}
         {{ form_row(newTaskForm.title) }}
         {{ form_row(newTaskForm.description) }}
+        {{ form_row(newTaskForm.user) }}
 
         <Button type="submit" class = "btn">Create New Task</Button>
     {{ form_end(newTaskForm) }}
