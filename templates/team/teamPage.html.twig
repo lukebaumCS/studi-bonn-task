@@ -8,27 +8,28 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="myTasks">
-        {% if team.tasks %}
-            {% for task in team.tasks %}
-                <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} </button>
-            {% endfor %}
-        {% endif %}
-        {% if isOwner %}
-            <div>Owner</div>
-        {% endif %}
-    </div>
+    <div class="container">
+        <div class="myTasks">
+            {% if team.tasks %}
+                {% for task in team.tasks %}
+                    <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} </button>
+                {% endfor %}
+            {% endif %}
+            {% if isOwner %}
+                <div>Owner</div>
+            {% endif %}
+        </div>
 
 
-    <div class="users">
-        <h2> All Users </h2>
-        {% if team.users %}
-            {% for user in team.users %}
-                <div>{{ user.email }}</div>
-            {% endfor %}
-        {% endif %}
+        <div class="users">
+            <h2> Team users </h2>                
+            <div>{{ team.owner.email }}</div>
+            {% if team.users %}
+                {% for user in team.users %}
+                    <div>{{ user.email }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
-</div>
 
 {% endblock %}
