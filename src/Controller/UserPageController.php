@@ -33,11 +33,11 @@ class UserPageController extends AbstractController
 
             foreach ($team->getUsers() as $member) {
                 if ($member->getId() == $myID or $owner->getId() == $myID) {
-                    $myTeams[] = ["name" => $team->getName()];
+                    $myTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
                     break;
                 }
                 else {
-                    $otherTeams[] = ["name" => $team->getName()];
+                    $otherTeams[] = ["name" => $team->getName(), "id" => $team->getId()];
                     break;
                 }
             }
