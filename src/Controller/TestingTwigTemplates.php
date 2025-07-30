@@ -28,7 +28,7 @@ class TestingTwigTemplates extends AbstractController
     }
 
 
-        #[Route('teamPage/{id}', name: 'teamPage')]
+        #[Route('teamPageTest/{id}', name: 'teamPageTEST')]
         public function teamPage(): Response
         {
             $this -> denyAccessUnlessGranted('ROLE_USER');
