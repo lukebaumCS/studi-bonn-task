@@ -1,0 +1,70 @@
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 80px); 
+}
+
+
+.confirmation-box {
+    max-width: 400px;
+    width: 100%;
+    padding: 40px;
+    background-color: #99627A;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Cabin', sans-serif;
+    text-align: center;
+}
+
+.confirmation-box h2 {
+    color: #502D36;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 35px;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+.btn-confirm {
+    background-color: #643843;
+    color: #CAA6A6;
+}
+
+.btn-confirm:hover {
+    background-color: #c8a8a8;
+    color: #643843;
+}
+
+
+.btn-cancel {
+    background-color: #C88EA7;
+    color: #502D36;
+}
+
+.btn-cancel:hover {
+    background-color: #7D4F5A;
+    color: #E4D4D8;
+}

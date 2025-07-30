@@ -1,24 +1,30 @@
-{% extends "base.html.twig"  %}
-{% block title %} User {% endblock title %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Join Team{% endblock %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/joinTeam.css') }}">
 {% endblock %}
 
-
-
-{% block h1 %} Do you want to join the team  {% endblock h1 %}
-  
-{% block addButton %}
-{% endblock %}
+{# Diese Blöcke bleiben leer, da die Navigation in base.html.twig ist #}
+{% block h1 %}{% endblock %}
+{% block addButton %}{% endblock %}
 
 {% block body %}
+<div class="page-wrapper">
+    <div class="confirmation-box">
+        <h2>Möchtest du diesem Team beitreten?</h2>
+        
+        <div class="button-group">
+            <a href="{{ path('joined-team', {'id': id}) }}" class="btn btn-confirm">
+                Team beitreten
+            </a>
 
-
-    <a href="{{ path('joined-team', {'id': id} ) }}">
-        <button id="joinTeam"> Join the Team</button>
-    </a>
-
-    <a href="{{ path('userPage') }}">
-        <button id="back"> Go back </button>
-    </a>
-
+            <a href="{{ path('userPage') }}" class="btn btn-cancel">
+                Zurück
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
