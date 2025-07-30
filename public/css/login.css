@@ -81,26 +81,28 @@ html, body {
 }
 
 .Information {
-    color: rgb(255, 103, 103);
+    color: darkred;
     font-family:  Calibri, Arial, sans-serif;
     font-weight: bold;
     margin-top: 25px;
     margin-bottom: -20px;
     font-size: 18px;
-    text-shadow: 0 0 1px rgb(255, 103, 103); /*glow effect*/
+    text-shadow: 0 0 1px darkred; /*glow effect*/
     animation: glowing 0.10s ease-out 1, shake 0.07s ease-in-out 1 forwards ; /*shake ang glow effect */
 }
 
 @keyframes glowing { 
     0% {
+       
         text-shadow: 
-            0 0 1px rgb(255, 103, 103), 
-            0 0 2px rgb(255, 103, 103);
+            0 0 1px darkred, 
+            0 0 2px darkred;
     }
     75% {
+        
         text-shadow: 
-            0 0 3px rgb(255, 103, 103), 
-            0 0 5px rgb(255, 103, 103);
+            0 0 3px darkred, 
+            0 0 5px darkred;
     }
 }
 

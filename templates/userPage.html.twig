@@ -1,42 +1,55 @@
-{% extends "base.html.twig"  %}
-{% block title %} User {% endblock title %}
+{% extends "base.html.twig" %}
+{% block title %}User Page{% endblock title %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/userPage.css') }}">
 {% endblock %}
 
-
-{% block h1 %} Welcome {{ username }} {% endblock h1 %}
-  
-{% block addButton %}
-    <a href="{{ path('new-team') }}">
-        <button type="button">
-            <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px;" >
-        </button>    
-     </a>
-{% endblock addButton %}
+{% block h1 %}{% endblock %}
+{% block addButton %}{% endblock %}
 
 {% block body %}
+<div class="main-container">
 
-<div class="container">
-    <div class="myTeamContainer">
-        {% if myTeams %}
-            {% for team in myTeams %}
-            <a href="{{ path('teamPage', {'id': team.id}) }}">
-                <button class="myTeam-button">{{ team.name }}</button>
-            {% endfor %}
-        {% endif %}
+    <!-- Section for your teams -->
+    <div class="teams-section">
+        <h2>Teams, in denen du Mitglied bist</h2>
+
+        <a href="{{ path('new-team') }}" class="add-team-button">
+            <img src="{{ asset('images/add.png') }}" alt="Neues Team erstellen">
+        </a>
+        
+        <div class="team-list">
+            {% if myTeams %}
+                {% for team in myTeams %}
+                    <a href="{{ path('teamPage', {'id': team.id}) }}" class="team-list-item">
+                        {{ team.name }}
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p class="no-teams-message">Du bist noch in keinem Team.</p>
+            {% endif %}
+        </div>
     </div>
 
+    <!-- Separator -->
     <hr>
 
-    <div class="allTeamsContainer">
-        {% if allTeams %}
-            {% for team in allTeams %}
-            <a href="{{ path('join-team', {'id': team.id }) }}">
-                <button class="allTeams-button"> {{ team.name }} </button>
-            </a>
-            {% endfor %}
-        {% endif %}
+    <!-- Section for all other teams -->
+    <div class="teams-section">
+        <h2>Teams, denen du beitreten kannst</h2>
+        <div class="team-list">
+            {% if allTeams %}
+                {% for team in allTeams %}
+                    <a href="{{ path('join-team', {'id': team.id }) }}" class="team-list-item">
+                        {{ team.name }}
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p class="no-teams-message">Es gibt keine weiteren Teams, denen du beitreten kannst.</p>
+            {% endif %}
+        </div>
     </div>
-</div>
 
+</div>
 {% endblock %}

@@ -1,3 +1,45 @@
-body{
-    background-color:#643843;
+body {
+    background-color: #643843;
+    padding-top: 70px;
+}
+
+.top-bar {
+    background-color: #502D36;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    line-height: 0;
+    transition: transform 0.2s ease;
+}
+
+.nav-button:hover {
+    transform: scale(1.1);
+}
+
+.nav-button img {
+    width: 40px;
+    height: 40px;
 }

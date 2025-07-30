@@ -3,40 +3,35 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Studi Bonn Task{% endblock title %}</title>
-        <link rel = "stylesheet" href="{{ asset('css/styles.css') }}">
-        {% block stylesheets %}
-        {% endblock %}
-
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        
-        
-        {% block addButton %}
-            <button type="button" >
-                <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px;" >
-            </button>    
-        {% endblock addButton %}
-        
-        {% block logoutButton %}
-        <a href="{{ path('app_logout') }}">
-            <button type="button">
-                    <img src="{{ asset('images/logout.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
-                </button> 
-        </a>       
-        {% endblock logoutButton %}
 
         {% block homeButton %}
-        <a href="{{ path('userPage') }}">
-            <button type="button">
-                    <img src="{{ asset('images/home.svg') }}" alt="Logout" style="width: 40px; height: 40px;">
-                </button> 
-        </a>       
-        {% endblock homeButton %}
+        <div class="top-bar">
+            <div class="top-nav">
+                
+                    <a href="{{ path('userPage') }}">
+                        <button type="button" class="nav-button">
+                            <img src="{{ asset('images/home-icon-silhouette.png') }}" alt="Home">
+                        </button>
+                    </a>
+                {% endblock homeButton %}
 
+                {% block logoutButton %}
+                    <a href="{{ path('app_logout') }}">
+                        <button type="button" class="nav-button">
+                            <img src="{{ asset('images/logout.png') }}" alt="Logout">
+                        </button>
+                    </a>
+                {% endblock logoutButton %}
+            </div>
+        </div>
 
+        {% block addButton %}
+        {% endblock addButton %}
         
-        <br>
-
         {% block body %}
         {% endblock body %}
     </body>
