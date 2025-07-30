@@ -17,8 +17,8 @@
 
     <div class="container">
         <div class="myTasks">
-            {% if team.tasks %}
-                {% for task in team.tasks %}
+            {% if tasks %}
+                {% for task in tasks %}
                 <a href="{{ path('edit-task', {'team_id': team.id, 'task_id': task.id}) }}">
                     <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} | {{ task.user.email }}</button>
                 </a>

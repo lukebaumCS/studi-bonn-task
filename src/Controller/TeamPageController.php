@@ -17,14 +17,21 @@ class TeamPageController extends AbstractController
     #[Route('teamPage/{id}', 'teamPage')]
     public function teamPage(Request $request, Team $team, LoggerInterface $logger): Response{
 
-
         $user = $this -> getUser();
+        $tasks = $team -> getTasks() -> toArray();
+
+        usort($tasks, fn(Task $a, Task $b) =>
+            ($b->getUser() === $user) <=> ($a->getUser() === $user)
+        );
 
         $isOwner = $user == $team -> getOwner();
+
+
         
         return $this -> render('team/teamPage.html.twig', [
             'team' => $team,
-           'isOwner' => $isOwner,
+            'tasks' => $tasks,
+            'isOwner' => $isOwner,
         ]);
     }
 }
