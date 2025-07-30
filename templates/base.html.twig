@@ -3,14 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Studi Bonn Task{% endblock title %}</title>
+        <link rel = "stylesheet" href="{{ asset('css/styles.css') }}">
         {% block stylesheets %}
         {% endblock %}
 
     </head>
     <body>
-        {% block h1 %}
-            <h1> Please add a title </h1>
-        {% endblock h1 %}
+        
         
         {% block addButton %}
             <button type="button" >

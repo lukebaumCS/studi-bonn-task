@@ -1,38 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login{% endblock %}
 
-{% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
-            </div>
-        #}
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="https://kit.fontawesome.com/179535dd9d.js" crossorigin="anonymous"></script>
 {% endblock %}
+{% block addButton %}{% endblock addButton %}
+{% block logoutButton %}{% endblock logoutButton %}
+{% block body %}
+<div class="loginWindow">
+    <div class="loginWindowText">
+        <h2>LOGIN</h2>
+        <h4>Welcome </h4>
+    </div>
+
+    <form class="InputForm" method="post">
+        {# Fehleranzeige von Symfony Security #}
+        {% if error %}
+            <p class="Information">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+        {% endif %}
+
+        <div class="loginWindowInput">
+            <input id="email" name="_username" type="email" 
+                   value="{{ last_username }}" 
+                   placeholder="E-Mail" required autofocus />
+
+            <div class="passwordContainer">
+                <input name="_password" id="password" type="password" placeholder="Password" required />
+                <span class="togglePassword" id="togglePassword1">
+                    <i class="eye-icon" id="eyeIcon1"></i>
+                </span>
+            </div>
+
+            {# CSRF Token für Symfony #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </div>
+
+        <div class="loginWindowLinks">
+            <div class="loginButton">
+                <button type="submit">Log In</button>
+            </div>
+            <p>Don't have an account? <a href="{{ path('app_register') }}">Sign up</a></p>
+        </div>
+    </form>
+</div>
+
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        const passwordField = document.getElementById(inputId);
+        const eyeIcon = document.getElementById(iconId);
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            eyeIcon.classList.add('open'); 
+        } else {
+            passwordField.type = 'password';
+            eyeIcon.classList.remove('open'); 
+        }
+    }
+
+    document.getElementById('togglePassword1').addEventListener('click', function () {
+        togglePasswordVisibility('password', 'eyeIcon1');
+    });
+</script>
+{% endblock %}
+
