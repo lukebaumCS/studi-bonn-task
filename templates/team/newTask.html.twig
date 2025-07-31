@@ -1,18 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Task {% endblock %}
+{% block title %}New Task{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/newTask.css') }}">
+{% endblock %}
+
+{% block h1 %}{% endblock %}
+{% block addButton %}{% endblock %}
 
 {% block body %}
-    <h1>New Task </h1>
-    <p>Create a new task for {{ team.name }}
+<div class="page-wrapper">
+    <div class="main-container">
+        <h2>Neue Aufgabe für "{{ team.name }}"</h2>
 
-    {{ form_errors(newTaskForm) }}
+        {{ form_start(newTaskForm) }}
+            {{ form_row(newTaskForm.title) }}
+            {{ form_row(newTaskForm.description) }}
+            {{ form_row(newTaskForm.user) }}
 
-    {{ form_start(newTaskForm) }}
-        {{ form_row(newTaskForm.title) }}
-        {{ form_row(newTaskForm.description) }}
-        {{ form_row(newTaskForm.user) }}
-
-        <Button type="submit" class = "btn">Create New Task</Button>
-    {{ form_end(newTaskForm) }}
+            <button type="submit" class="btn">Aufgabe erstellen</button>
+        {{ form_end(newTaskForm) }}
+    </div>
+</div>
 {% endblock %}
+

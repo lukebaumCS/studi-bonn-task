@@ -1,45 +1,33 @@
 {% extends "base.html.twig" %}
 {% block title %} {{ team.name }} {% endblock title %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/teamPage.css') }}">
 {% endblock %}
 
-
-{% block h1 %} Welcome to {{ team.name }} {% endblock h1 %}
-
-{% block addButton %}
-    <a href="{{ path('new-task', {'id': team.id}) }}">
-        <img src="{{ asset('images/add.svg') }}" alt="Add" style="width: 40px; height: 40px; cursor: pointer;">
-    </a>
-{% endblock addButton %}
-
+{% block h1 %}{% endblock %}
+{% block addButton %}{% endblock %}
 
 {% block body %}
-
-    <div class="container">
-        <div class="myTasks">
-            {% if tasks %}
-                {% for task in tasks %}
-                <a href="{{ path('edit-task', {'team_id': team.id, 'task_id': task.id}) }}">
-                    <button class="myTasks-button"> {{ task.title }} | {{ task.status.value }} | {{ task.user.email }}</button>
-                </a>
-                {% endfor %}
-            {% endif %}
-            {% for message in app.flashes('error') %}
-                <div class="allert alert-denied">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-
-
-        <div class="users">
-            <h2> Team users </h2>                
-            {% if team.users %}
-                {% for user in team.users %}
-                    <div>{{ user.email }}</div>
-                {% endfor %}
-            {% endif %}
-        </div>
+<div class="main-container">
+    <div class="actions-header">
+        <h2>Aufgaben für: {{ team.name }}</h2>
+        <a href="{{ path('new-task', {'id': team.id}) }}" class="btn-primary">Neue Aufgabe</a>
     </div>
 
+    <div class="task-list">
+        {% if tasks is not empty %}
+            {% for task in tasks %}
+                <div class="task-item">
+                    <span class="title">{{ task.title }}</span>
+                    <span class="user">{{ task.user.email }}</span>
+                    <span class="status">{{ task.status.value }}</span>
+                    <a href="{{ path('edit-task', {'team_id': team.id, 'task_id': task.id}) }}" class="edit-btn-link">Bearbeiten</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: #502D36; text-align: center; padding: 20px;">Für dieses Team gibt es noch keine Aufgaben.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

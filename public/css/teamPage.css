@@ -1,0 +1,93 @@
+/* --- GRUNDLAGEN & LAYOUT --- */
+.main-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #99627A;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Cabin', sans-serif;
+}
+
+.main-container h2 {
+    color: #502D36;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C88EA7;
+    font-size: 32px;
+}
+
+/* --- TEAM PAGE SPEZIFISCH --- */
+.actions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    gap: 20px;
+    background-color: #C88EA7;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: #502D36;
+}
+
+.task-item .title {
+    font-weight: 600;
+}
+
+.task-item .user, .task-item .status {
+    font-size: 14px;
+    background-color: #99627A;
+    color: #E4D4D8;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.edit-btn-link {
+    background: none;
+    border: 2px solid #7D4F5A;
+    color: #7D4F5A;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.edit-btn-link:hover {
+    background-color: #7D4F5A;
+    color: #E4D4D8;
+}
+
+.btn-primary {
+    background-color: #643843;
+    color: #CAA6A6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c8a8a8;
+    color: #643843;
+}

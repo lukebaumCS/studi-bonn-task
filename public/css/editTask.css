@@ -1,0 +1,108 @@
+/* --- GRUNDLAGEN & LAYOUT --- */
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 80px); 
+}
+
+.main-container {
+    max-width: 700px;
+    width: 100%;
+    margin: 40px;
+    padding: 40px;
+    background-color: #99627A;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Cabin', sans-serif;
+}
+
+.main-container h2 {
+    color: #502D36;
+    margin: 0 0 30px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C88EA7;
+    font-size: 32px;
+    text-align: center;
+}
+
+/* --- FORMULAR-STYLING --- */
+.main-container form div {
+    margin-bottom: 25px;
+}
+
+.main-container label {
+    display: block;
+    color: #502D36;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.main-container input[type="text"],
+.main-container textarea,
+.main-container select {
+    width: 100%;
+    padding: 12px;
+    background-color: #C88EA7;
+    border: none;
+    border-radius: 5px;
+    color: #502D36;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+    outline: none; /* Standard-Outline entfernen */
+}
+
+.main-container select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502D36' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+/* Neue Stile für Dropdown-Optionen */
+.main-container select option {
+    background-color: #C88EA7 !important;
+    color: #502D36 !important;
+}
+
+/* Fokus-Stil ersetzen */
+.main-container select:focus {
+    outline: 2px solid #643843;
+    outline-offset: 2px;
+}
+
+/* Hover/Checked-Optionen */
+.main-container select option:checked,
+.main-container select option:hover {
+    background-color: #99627A !important;
+    color: white !important;
+}
+
+.main-container textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    width: 80%;
+    padding: 15px;
+    margin: 30px auto 0 auto;
+    display: block;
+    background-color: #643843;
+    color: #CAA6A6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c8a8a8;
+    color: #643843;
+}
