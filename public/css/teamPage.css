@@ -25,15 +25,18 @@
     margin-bottom: 20px;
 }
 
-.task-list {
+.task-list, .member-list { /* .member-list hinzugefügt */
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+.member-list {
+    width:30%;
+}
 
-.task-item {
+.task-item, .member-item { /* .member-item hinzugefügt */
     display: grid;
-    grid-template-columns: 1fr auto auto auto;
+    grid-template-columns: 1fr; 
     align-items: center;
     gap: 20px;
     background-color: #C88EA7;
@@ -42,7 +45,13 @@
     color: #502D36;
 }
 
-.task-item .title {
+/* Spezifische Anpassung für Task-Items, um das alte Layout beizubehalten */
+.task-item {
+    grid-template-columns: 1fr auto auto auto;
+}
+
+
+.task-item .title, .member-item .member-name { /* .member-item .member-name hinzugefügt */
     font-weight: 600;
 }
 
@@ -90,4 +99,32 @@
 .btn-primary:hover {
     background-color: #c8a8a8;
     color: #643843;
+}
+
+/* Hinzugefügt: Stile für Trenner und Flash-Nachrichten */
+hr.section-divider-hr {
+    border: none;
+    border-top: 2px solid #C88EA7;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+.section-divider {
+    margin-top: 20px;
+}
+
+.section-divider h2 {
+    border-bottom: none; /* Da die Linie jetzt von hr kommt */
+}
+
+.flash-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.flash-error {
+    background-color: #D32F2F; /* Rote Farbe für Fehler */
 }

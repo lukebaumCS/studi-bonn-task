@@ -10,6 +10,16 @@
 
 {% block body %}
 <div class="main-container">
+
+    {# Hinzugefügt: Container für Flash-Nachrichten (Fehlermeldungen) #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-message flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <div class="actions-header">
         <h2>Aufgaben für: {{ team.name }}</h2>
         <a href="{{ path('new-task', {'id': team.id}) }}" class="btn-primary">Neue Aufgabe</a>
@@ -29,5 +39,54 @@
             <p style="color: #502D36; text-align: center; padding: 20px;">Für dieses Team gibt es noch keine Aufgaben.</p>
         {% endif %}
     </div>
+
+    
+    <hr class="section-divider-hr">
+    <div class="section-divider">
+        <h2>Mitglieder</h2>
+    </div>
+
+    <div class="member-list">
+        {% if team.users is not empty %}
+            {% for user in team.users %}
+                <div class="member-item">
+                    <span class="member-name">{{ user.email }}</span>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: #502D36; text-align: center; padding: 20px;">Dieses Team hat noch keine Mitglieder.</p>
+        {% endif %}
+    </div>
+
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const mainContainer = document.querySelector('.main-container');
+    const currentUserEmail = mainContainer.dataset.currentUserEmail;
+    const editLinks = document.querySelectorAll('.edit-btn-link');
+    
+    
+    const errorContainer = document.getElementById('inline-error-container');
+
+    editLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            
+            // Leert die Fehlermeldung bei jedem Klick
+            errorContainer.innerHTML = ''; 
+
+            const taskItem = event.target.closest('.task-item');
+            const assignedUserEmail = taskItem.querySelector('.user').textContent;
+
+            if (currentUserEmail !== assignedUserEmail) {
+                
+                event.preventDefault(); 
+                
+              
+                errorContainer.innerHTML = `<p style="color: #502D36; background-color: #E4D4D8; text-align: center; padding: 20px; border-radius: 5px; margin-bottom: 20px;">Sie haben keine Berechtigung, diese Aufgabe zu bearbeiten.</p>`;
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
