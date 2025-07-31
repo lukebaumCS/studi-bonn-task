@@ -27,7 +27,7 @@ class NewTaskController extends AbstractController
         if ($form -> isSubmitted() && $form->isValid()){
             $now = new \DateTime();
 
-            $task -> setTeam($team);
+            $task -> setTeam(team: $team);
             $task -> setCreatedAt($now);
             $task -> setUpdatedAt($now);
             $task -> setStatus(TaskStatus::TODO);

@@ -12,16 +12,14 @@ class TaskEditFormType extends NewTaskFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // Erstmal alle Felder aus der Elternklasse hinzufügen
+        // alle Felder aus der Elternklasse erben
         parent::buildForm($builder, $options);
 
-        // Dann den Status hinzufügen
         $builder->add('status', ChoiceType::class, [
             'choices' => [
                 'Todo' => TaskStatus::TODO,
                 'In Progress' => TaskStatus::IN_PROGRESS,
                 'Done' => TaskStatus::DONE,
-                // Je nachdem wie dein TaskStatus enum definiert ist
             ],
             'constraints' => [
                 new NotBlank([
@@ -34,6 +32,5 @@ class TaskEditFormType extends NewTaskFormType
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
-        // Hier ggf. noch Anpassungen an den Optionen vornehmen
     }
 }

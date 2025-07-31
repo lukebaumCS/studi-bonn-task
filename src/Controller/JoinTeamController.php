@@ -27,7 +27,7 @@ class JoinTeamController extends AbstractController {
     public function joinedTeam(Team $team, EntityManagerInterface $entityManager): Response
     {   
 
-        $team->addUser($user = $this->getUser());
+        $team->addUser($this->getUser());
 
         $entityManager -> persist($team);
         $entityManager -> flush();
